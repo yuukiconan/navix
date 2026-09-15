@@ -1,0 +1,12 @@
+{
+  "name": "navix-backend",
+  "version": "1.0.0",
+  "description": "Backend Node.js (Vercel Serverless Functions) sebagai perantara aman antara frontend Navix dan Firebase Realtime Database",
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
