@@ -65,9 +65,7 @@
     </div>
 
     <script>
-        // Dashboard sekarang memanggil backend kita sendiri (/api/location),
-        // BUKAN Firebase langsung. Kredensial Firebase tidak lagi terekspos di browser.
-        const urlBackend = "/navix-backend/api/location";
+        const urlBackend = "https://fixselesai-fde60-default-rtdb.asia-southeast1.firebasedatabase.app";
 
         function ambilDataGPS() {
             const statusEl = document.getElementById('txt-status');
