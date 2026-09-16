@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard lokasi kendaraan Navix secara langsung.">
+    <title>Navix / Dashboard Langsung</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <nav class="topbar">
+        <a class="brand" href="../index.html"><span class="brand-mark">N</span><span>navix<span class="brand-dot">.</span></span></a>
+        <div class="nav-links"><a class="active" href="index.html">Dashboard</a><a href="../riwayat/">Riwayat</a><a href="../credits/credits.html">Kredit</a><a href="../credits/credits.html">Our Team</a></div>
+        <div class="nav-actions"><span class="workspace-label">Ruang pribadi</span><button class="icon-button" aria-label="Notifikasi"><i data-lucide="bell"></i></button><button class="profile-button" aria-label="Profil">NS</button><button class="menu-button" id="mobile-menu-btn" aria-label="Buka navigasi"><i data-lucide="menu"></i></button></div>
+    </nav>
+    <div class="mobile-nav hidden" id="mobile-menu"><a class="active" href="index.html">Dashboard</a><a id="mobile-team-link" href="../riwayat/">Riwayat</a><a href="../credits/credits.html">Kredit</a><a href="../credits/credits.html">Our Team</a></div>
+
+    <main class="dashboard-shell">
+        <section class="dashboard-heading"><div><p class="kicker">Rabu, 16 September 2026</p><h1>Selamat pagi, Navix<span>.</span></h1><p class="muted">Berikut kondisi kendaraanmu hari ini.</p></div><a class="primary-button" href="#map-panel"><i data-lucide="crosshair"></i> Cari kendaraan</a></section>
+
+        <section class="overview-grid">
+            <article class="overview-card overview-card-featured"><div class="card-heading"><div><p class="kicker">Koneksi</p><h2>Pelacak Navix</h2></div><span class="status-pill" id="connection-status"><span></span> Menghubungkan</span></div><div class="device-row"><div class="device-icon"><i data-lucide="radio-tower"></i></div><div><strong>Pelacak kendaraan</strong><p>Modul ESP32 / GPS</p></div><span class="device-online" id="device-status">Memeriksa</span></div><div class="card-footer"><span>Sinkronisasi terakhir</span><strong id="timestamp">Menunggu sinyal</strong></div></article>
+            <article class="overview-card"><div class="card-heading"><div><p class="kicker">Lintang saat ini</p><h2 id="latitude">-</h2></div><div class="metric-icon"><i data-lucide="map-pin"></i></div></div><p class="metric-note">Koordinat GPS · utara / selatan</p></article>
+            <article class="overview-card"><div class="card-heading"><div><p class="kicker">Bujur saat ini</p><h2 id="longitude">-</h2></div><div class="metric-icon"><i data-lucide="compass"></i></div></div><p class="metric-note">Koordinat GPS · timur / barat</p></article>
+        </section>
+
+        <section class="content-grid">
+            <article class="map-panel" id="map-panel"><div class="panel-header"><div><p class="kicker">Ikhtisar langsung</p><h2>Lokasi kendaraan</h2></div><span class="map-source"><span></span> OpenStreetMap</span></div><div class="map-frame"><div id="map"></div><div class="map-overlay"><span class="map-live-dot"></span><span>Pelacakan aktif</span></div></div><div class="map-footer"><div><i data-lucide="navigation"></i><span>Rute terakhir</span></div><strong id="map-location">Menunggu koordinat</strong><button class="icon-button map-recenter" id="recenter-map" aria-label="Pusatkan ulang peta"><i data-lucide="locate-fixed"></i></button></div></article>
+            <aside class="side-column"><article class="activity-card"><div class="panel-header"><div><p class="kicker">Status sistem</p><h2>Semua siap</h2></div><i class="status-icon" data-lucide="check-circle-2"></i></div><p class="muted">Pelacak Navix siap mengirim pembaruan lokasi melalui Firebase Realtime Database.</p><div class="status-list"><div><span class="status-check"></span><span>Sinyal GPS</span><strong id="gps-status">Siaga</strong></div><div><span class="status-check"></span><span>Sinkronisasi cloud</span><strong id="cloud-status">Siaga</strong></div><div><span class="status-check"></span><span>Daya perangkat</span><strong>Stabil</strong></div></div></article><article class="tip-card"><div class="tip-icon"><i data-lucide="sparkles"></i></div><div><p class="kicker">Tips singkat</p><p>Simpan pelacak di tempat dengan pandangan langit yang jelas agar lokasi lebih akurat.</p></div></article></aside>
+        </section>
+    </main>
+    <footer class="dashboard-footer"><span>Navix / Kecerdasan kendaraan langsung</span><span>© 2026</span></footer>
+</body>
+</html>

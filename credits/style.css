@@ -1,139 +1,569 @@
-/* Pengaturan Dasar */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+
+:root {
+    --ink: #17211d;
+    --paper: #f5f3ee;
+    --lime: #d9f35b;
+    --moss: #536c52;
+    --green: #1f7a50;
+    --line: rgba(23, 33, 29, .16)
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
+}
+
+html {
+    background: var(--paper);
+    scroll-behavior: smooth
 }
 
 body {
-    background-color: #f4f9f4; /* Putih keabu-abuan dengan sentuhan hijau tipis */
-    color: #1b4332; /* Hijau tua gelap untuk teks utama */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    overflow-x: hidden
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+.site-header {
     align-items: center;
-    padding: 40px 20px;
+    display: flex;
+    height: 82px;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1380px;
+    padding: 0 42px
 }
 
-/* Wadah Utama */
-.container {
-    width: 100%;
-    max-width: 900px;
-    background-color: #ffffff; /* Putih bersih */
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(45, 106, 79, 0.08); /* Bayangan hijau lembut */
+.brand {
+    align-items: center;
+    display: inline-flex;
+    font-size: 21px;
+    font-weight: 700;
+    gap: 9px;
+    letter-spacing: -.07em
 }
 
-/* Header */
-.credits-header {
-    text-align: center;
-    margin-bottom: 40px;
+.brand-mark {
+    align-items: center;
+    background: var(--ink);
+    border-radius: 50%;
+    color: var(--lime);
+    display: inline-flex;
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    height: 30px;
+    justify-content: center;
+    letter-spacing: 0;
+    width: 30px
 }
 
-.credits-header h1 {
-    font-size: 2.5rem;
-    color: #2d6a4f; /* Hijau medium */
-    margin-bottom: 10px;
+.brand-dot {
+    color: var(--moss)
 }
 
-.credits-header p {
-    color: #52b788; /* Hijau muda */
-    font-size: 1.1rem;
+.desktop-nav {
+    display: flex;
+    font-size: 13px;
+    gap: 34px;
+    margin-left: 125px
 }
 
-/* Grid Layout untuk Kartu */
+.desktop-nav a {
+    transition: color .25s ease
+}
+
+.desktop-nav a:hover,
+.desktop-nav .active {
+    color: var(--moss)
+}
+
+.header-cta {
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+    display: inline-flex;
+    font-size: 13px;
+    gap: 8px;
+    padding-bottom: 5px
+}
+
+.header-cta svg,
+.text-link svg {
+    height: 15px;
+    width: 15px
+}
+
+.menu-toggle {
+    background: none;
+    border: 0;
+    display: none;
+    padding: 5px
+}
+
+.mobile-menu {
+    display: none
+}
+
+.section-pad {
+    margin: auto;
+    max-width: 1380px;
+    padding-left: 42px;
+    padding-right: 42px
+}
+
+.eyebrow,
+.section-label,
+.member-number,
+.role,
+.socials {
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase
+}
+
+.eyebrow {
+    align-items: center;
+    color: var(--moss);
+    display: flex;
+    font-size: 10px;
+    gap: 11px;
+    letter-spacing: .09em
+}
+
+.eyebrow-line {
+    background: var(--moss);
+    display: inline-block;
+    height: 1px;
+    width: 28px
+}
+
+.credits-hero {
+    align-items: end;
+    display: grid;
+    gap: 10%;
+    grid-template-columns: 1.25fr .75fr;
+    min-height: 475px;
+    padding-bottom: 93px;
+    padding-top: 75px
+}
+
+.hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(66px, 8vw, 120px);
+    font-weight: 500;
+    letter-spacing: -.065em;
+    line-height: .91;
+    margin: 25px 0 0
+}
+
+.hero-title em,
+.thanks-inner em {
+    color: var(--moss);
+    font-style: italic
+}
+
+.hero-note {
+    border-top: 1px solid var(--line);
+    color: var(--moss);
+    font-size: 16px;
+    line-height: 1.5;
+    padding-top: 18px
+}
+
+.note-mark {
+    color: var(--green);
+    display: block;
+    font-size: 25px;
+    margin-bottom: 16px
+}
+
+.team-section {
+    background: #e6e2d8;
+    max-width: none;
+    padding-bottom: 120px;
+    padding-top: 82px
+}
+
+.section-intro {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 43px;
+    max-width: 1296px
+}
+
+.section-label {
+    color: var(--moss);
+    font-size: 10px;
+    letter-spacing: .08em
+}
+
+.section-intro p {
+    color: var(--moss);
+    font-size: 16px;
+    margin: 0
+}
+
 .credits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 13px;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    max-width: 1296px
 }
 
-/* Gaya Kartu Credits */
 .credit-card {
-    background-color: #ffffff;
-    border: 2px solid #e9f5ed; /* Garis tepi hijau sangat tipis */
+    min-height: 475px;
     padding: 24px;
-    border-radius: 12px;
-    text-align: center;
-    transition: all 0.3s ease;
+    position: relative;
+    transition: transform .3s ease
 }
 
-/* Efek saat kursor menyorot kartu */
 .credit-card:hover {
-    border-color: #52b788;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(82, 183, 136, 0.15);
+    transform: translateY(-7px)
 }
 
-.card-icon {
-    font-size: 2rem;
-    margin-bottom: 12px;
+.credit-card-dark {
+    background: var(--ink);
+    color: var(--paper)
 }
 
-.credit-card h2 {
-    font-size: 1.1rem;
-    color: #52b788;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
+.credit-card-lime {
+    background: var(--lime)
 }
 
-.credit-card .name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #1b4332;
-    margin-bottom: 4px;
+.credit-card-paper {
+    background: var(--paper)
 }
 
-.credit-card .role {
-    font-size: 0.9rem;
-    color: #74c69d;
+.credit-card-moss {
+    background: var(--moss);
+    color: var(--paper)
 }
 
-/* Ucapan Terima Kasih */
-.special-thanks {
-    text-align: center;
-    background-color: #f4f9f4;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    border-left: 4px solid #2d6a4f;
+.member-top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between
 }
 
-.special-thanks h3 {
-    color: #2d6a4f;
-    margin-bottom: 6px;
+.member-number {
+    font-size: 10px
 }
 
-/* Footer & Tombol */
-.credits-footer {
-    text-align: center;
-    border-top: 1px solid #e9f5ed;
-    padding-top: 20px;
+.member-symbol {
+    font-size: 24px;
+    font-weight: 400
 }
 
-.credits-footer p {
-    font-size: 0.9rem;
-    color: #74c69d;
-    margin-bottom: 15px;
+.credit-card-dark .member-number,
+.credit-card-moss .member-number {
+    color: #adc0b0
 }
 
-.btn {
-    background-color: #2d6a4f;
-    color: #ffffff;
-    border: 2px solid #2d6a4f;
-    padding: 10px 24px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.credit-card-lime .member-number,
+.credit-card-paper .member-number {
+    color: var(--moss)
 }
 
-.btn:hover {
-    background-color: #ffffff;
-    color: #2d6a4f;
+.member-portrait {
+    align-items: center;
+    display: flex;
+    aspect-ratio: 3 / 4;
+    justify-content: center;
+    margin: 38px 0 28px;
+    overflow: hidden;
+    position: relative
+}
+
+.member-portrait img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.member-portrait span {
+    font-family: 'Fraunces', serif;
+    font-size: 43px;
+    letter-spacing: -.08em;
+    position: relative;
+    z-index: 1
+}
+
+.portrait-leader {
+    background: #344e3b;
+    color: var(--lime)
+}
+
+.portrait-design {
+    background: #bdd75a;
+    color: #185c3d
+}
+
+.portrait-dev {
+    background: #d9d3c5;
+    color: var(--moss)
+}
+
+.portrait-qa {
+    background: #729173;
+    color: var(--paper)
+}
+
+.role {
+    color: var(--moss);
+    font-size: 9px;
+    letter-spacing: .06em;
+    margin: 0 0 11px
+}
+
+.credit-card-dark .role,
+.credit-card-moss .role {
+    color: #c5d1c5
+}
+
+.member-info h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -.05em;
+    margin: 0
+}
+
+.bio {
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 13px 0 0;
+    max-width: 190px
+}
+
+.credit-card-dark .bio,
+.credit-card-moss .bio {
+    color: #bdcbbf
+}
+
+.socials {
+    bottom: 24px;
+    display: flex;
+    gap: 14px;
+    position: absolute
+}
+
+.socials a {
+    align-items: center;
+    border-bottom: 1px solid currentColor;
+    display: flex;
+    padding-bottom: 4px
+}
+
+.socials svg {
+    height: 14px;
+    width: 14px
+}
+
+.thanks-section {
+    padding-bottom: 135px;
+    padding-top: 127px
+}
+
+.thanks-inner {
+    max-width: 700px
+}
+
+.thanks-inner h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(60px, 7vw, 100px);
+    font-weight: 500;
+    letter-spacing: -.065em;
+    line-height: .92;
+    margin: 24px 0
+}
+
+.thanks-inner>p:not(.eyebrow) {
+    color: var(--moss);
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 395px
+}
+
+.text-link {
+    align-items: center;
+    border-bottom: 1px solid var(--ink);
+    display: inline-flex;
+    font-size: 13px;
+    gap: 8px;
+    margin-top: 25px;
+    padding-bottom: 5px
+}
+
+.site-footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 1380px;
+    padding: 30px 42px
+}
+
+.site-footer p,
+.site-footer>span {
+    color: var(--moss);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase
+}
+
+.site-footer p {
+    margin: 0
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px)
+}
+
+@media(max-width:900px) {
+    .desktop-nav {
+        gap: 18px;
+        margin-left: 30px
+    }
+
+    .credits-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .credits-hero {
+        grid-template-columns: 1fr;
+        gap: 55px
+    }
+
+    .hero-note {
+        max-width: 390px
+    }
+
+    .credit-card {
+        min-height: 445px
+    }
+}
+
+@media(max-width:650px) {
+    .site-header {
+        height: 70px;
+        padding: 0 22px
+    }
+
+    .desktop-nav,
+    .header-cta {
+        display: none
+    }
+
+    .menu-toggle {
+        display: block
+    }
+
+    .mobile-menu {
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 22px;
+        transition: max-height .35s ease, padding .35s ease
+    }
+
+    .mobile-menu.is-open {
+        max-height: 280px;
+        padding-bottom: 18px;
+        padding-top: 12px
+    }
+
+    .mobile-menu a {
+        font-size: 17px;
+        padding: 10px 0
+    }
+
+    .mobile-menu .active {
+        color: var(--moss)
+    }
+
+    .mobile-menu-cta {
+        align-items: center;
+        border-top: 1px solid var(--line);
+        display: flex;
+        gap: 8px;
+        margin-top: 7px;
+        padding-top: 18px !important
+    }
+
+    .section-pad {
+        padding-left: 22px;
+        padding-right: 22px
+    }
+
+    .credits-hero {
+        display: block;
+        min-height: auto;
+        padding-bottom: 77px;
+        padding-top: 50px
+    }
+
+    .hero-title {
+        font-size: clamp(60px, 17vw, 92px);
+        margin-top: 22px
+    }
+
+    .hero-note {
+        margin-top: 58px
+    }
+
+    .team-section {
+        padding-bottom: 80px;
+        padding-top: 75px
+    }
+
+    .section-intro {
+        align-items: flex-start;
+        display: block;
+        margin-bottom: 35px
+    }
+
+    .section-intro p {
+        margin-top: 21px
+    }
+
+    .credits-grid {
+        grid-template-columns: 1fr
+    }
+
+    .credit-card {
+        min-height: 440px
+    }
+
+    .thanks-section {
+        padding-bottom: 95px;
+        padding-top: 90px
+    }
+
+    .thanks-inner h2 {
+        font-size: clamp(57px, 16vw, 86px)
+    }
+
+    .site-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px 22px
+    }
+
+    .site-footer p {
+        order: 3
+    }
 }

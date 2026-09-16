@@ -3,109 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css" />
-    <title>Navix - Sistem Monitoring</title>
+    <meta name="description" content="Navix menemani setiap perjalanan dengan pelacakan lokasi kendaraan secara langsung.">
+    <title>Navix — Kenali perjalananmu</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="/script.js"></script>
 </head>
 <body>
-
-    <div class="navbar">
-        <div class="logo">Navix</div>
-        <nav>
-            <a href="#" class="active">Dashboard</a>
-            <a href="/riwayat/index.html">Riwayat</a>
-            <a href="#">Perangkat</a>
-            <a href="/credits/credits.html">Credits</a>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="Navix home">
+            <span class="brand-mark">N</span>
+            <span>navix<span class="brand-dot">.</span></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navigasi utama">
+            <a href="#about">Tentang Navix</a>
+            <a href="#functions">Fungsi</a>
+            <a href="#how-it-works">Cara kerja</a>
+            <a href="credits/credits.html">Our Team</a>
         </nav>
+        <a class="header-cta" href="tools/index.html">Coba sekarang <i data-lucide="arrow-up-right"></i></a>
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
+            <i data-lucide="menu"></i>
+        </button>
+    </header>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about">Tentang Navix</a>
+        <a href="#functions">Fungsi</a>
+        <a href="#how-it-works">Cara kerja</a>
+        <a href="credits/credits.html">Our Team</a>
+        <a class="mobile-menu-cta" href="tools/index.html">Coba sekarang <i data-lucide="arrow-up-right"></i></a>
     </div>
 
-    <div class="main-container">
-        <div class="header-title">
-            <h1>Pelacak Real-Time</h1>
-            <p>Pantau lokasi perangkat Anda secara akurat.</p>
-        </div>
-
-        <div class="dashboard-grid">
-            <div class="card">
-                <h2>Status Perangkat</h2>
-                <table class="info-table">
-                    <tr>
-                        <td>Nama Alat:</td>
-                        <td>Navix</td>
-                    </tr>
-                    <tr>
-                        <td>Status:</td>
-                        <td><span id="txt-status" class="status-connecting">Menghubungkan...</span></td>
-                    </tr>
-                    <tr>
-                        <td>Akurasi GPS:</td>
-                        <td id="txt-accuracy">Mencari Sinyal</td>
-                    </tr>
-                    <tr>
-                        <td>Baterai:</td>
-                        <td>84%</td>
-                    </tr>
-                </table>
+    <main>
+        <section class="hero section-pad">
+            <div class="hero-copy">
+                <p class="eyebrow reveal"><span class="eyebrow-line"></span> Cara bergerak yang lebih jelas</p>
+                <h1 class="hero-title reveal">Tahu di mana<br><em>pulangmu.</em></h1>
+                <p class="hero-description reveal">Navix melacak kendaraanmu secara langsung, agar setiap perjalanan terasa lebih pasti dan setiap kepulangan terasa lebih dekat.</p>
+                <div class="hero-actions reveal">
+                    <a class="button button-dark" href="tools/index.html">Lacak kendaraan <i data-lucide="arrow-up-right"></i></a>
+                    <a class="text-link" href="#about">Kenali Navix <i data-lucide="arrow-down"></i></a>
+                </div>
             </div>
-
-            <div class="card">
-                <h2>Koordinat Geografis</h2>
-                <div class="geo-display">
-                    <div class="geo-box">
-                        <div class="geo-label">Latitude</div>
-                        <div id="val-lat" class="geo-value">--.------</div>
-                    </div>
-                    <div class="geo-box">
-                        <div class="geo-label">Longitude</div>
-                        <div id="val-lng" class="geo-value">--.------</div>
+            <div class="hero-visual reveal">
+                <div class="hero-image-wrap">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85" alt="Kendaraan hijau tua di jalan terbuka">
+                    <div class="image-grain"></div>
+                    <div class="live-card">
+                        <div class="live-card-top"><span class="live-pulse"></span> Lokasi langsung <span class="live-time">sekarang</span></div>
+                        <div class="live-map-lines"></div>
+                        <div class="route-dot route-dot-start"></div>
+                        <div class="route-dot route-dot-end"></div>
+                        <div class="route-line"></div>
+                        <div class="live-card-bottom"><span>Jakarta Selatan</span><strong>12.4 km</strong></div>
                     </div>
                 </div>
-                <div id="txt-time" class="timestamp">Terakhir diperbarui: Menunggu request...</div>
+                <p class="image-caption"><span>01 / 04</span> Dibuat untuk perjalanan yang berarti.</p>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <script>
-        const urlBackend = "https://fixselesai-fde60-default-rtdb.asia-southeast1.firebasedatabase.app/tracker.json";
+        <section class="ticker" aria-label="Manfaat Navix">
+            <div class="ticker-track"><span>Lokasi langsung</span><b>✳</b><span>Rasa tenang</span><b>✳</b><span>Setiap perjalanan</span><b>✳</b><span>Pelacakan Navix</span><b>✳</b><span>Lokasi langsung</span><b>✳</b><span>Rasa tenang</span></div>
+        </section>
 
-        function ambilDataGPS() {
-            const statusEl = document.getElementById('txt-status');
-            const accuracyEl = document.getElementById('txt-accuracy');
-            const latEl = document.getElementById('val-lat');
-            const lngEl = document.getElementById('val-lng');
-            const timeEl = document.getElementById('txt-time');
+        <section class="about section-pad" id="about">
+            <div class="section-label reveal">02 / Tentang Navix</div>
+            <div class="about-content">
+                <h2 class="section-title reveal">Tenang dalam<br><em>perjalanan.</em></h2>
+                <div class="about-copy reveal"><p>Bukan sekadar titik di peta. Navix memberi pandangan langsung dan jelas tentang perjalanan kendaraanmu, ke mana pun jalan membawanya.</p><p>Dibuat untuk keluarga, tim, dan siapa saja yang ingin menjalani hari tanpa banyak menebak.</p><a class="text-link" href="#how-it-works">Lihat cara kerja <i data-lucide="arrow-down-right"></i></a></div>
+            </div>
+            <div class="stats-row reveal"><div><strong>01</strong><span>Satu tampilan langsung<br>untuk setiap perjalanan</span></div><div><strong>24/7</strong><span>Kesadaran yang<br>selalu terjaga</span></div><div><strong>∞</strong><span>Rute yang layak<br>untuk kembali</span></div></div>
+        </section>
 
-            fetch(urlBackend, { method: 'GET', cache: 'no-store' })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Respons jaringan bermasalah');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data && data.lat !== undefined && data.lng !== undefined) {
-                        latEl.innerText = data.lat;
-                        lngEl.innerText = data.lng;
+        <section class="functions section-pad" id="functions">
+            <div class="section-label reveal">03 / Yang Navix lakukan</div>
+            <div class="functions-heading"><h2 class="section-title reveal">Perangkat kecil.<br><em>Gambaran besar.</em></h2><p class="reveal">Semua yang kamu perlukan untuk tetap terhubung dengan kendaraan dan orang-orang yang membuat duniamu terus bergerak.</p></div>
+            <div class="function-grid">
+                <article class="function-card function-card-dark reveal"><span class="card-index">01</span><i data-lucide="radar"></i><h3>Lokasi langsung</h3><p>Lihat posisi kendaraanmu saat ini dengan data lokasi yang diperbarui seiring pergerakannya.</p><a href="tools/index.html" aria-label="Coba lokasi langsung"><i data-lucide="arrow-up-right"></i></a></article>
+                <article class="function-card function-card-lime reveal"><span class="card-index">02</span><i data-lucide="route"></i><h3>Perjalanan yang jelas</h3><p>Ubah peta yang bergerak menjadi jawaban sederhana: di mana kendaraan berada dan ke mana arahnya.</p><a href="tools/index.html" aria-label="Coba perjalanan yang jelas"><i data-lucide="arrow-up-right"></i></a></article>
+                <article class="function-card function-card-paper reveal"><span class="card-index">03</span><i data-lucide="shield-check"></i><h3>Rasa tenang</h3><p>Lebih sedikit mengecek. Lebih banyak hadir. Navix menjaga hal penting tetap dekat.</p><a href="tools/index.html" aria-label="Coba rasa tenang"><i data-lucide="arrow-up-right"></i></a></article>
+            </div>
+        </section>
 
-                        statusEl.innerText = "Aktif";
-                        statusEl.className = "status-active";
-                        accuracyEl.innerText = data.accuracy ? `± ${data.accuracy} Meter` : "± 5 Meter";
+        <section class="how section-pad" id="how-it-works">
+            <div class="section-label reveal">04 / Cara kerja</div>
+            <div class="how-layout"><div class="how-intro"><h2 class="section-title reveal">Tiga langkah.<br><em>Tanpa rumit.</em></h2><p class="reveal">Dari sinyal menjadi kepastian dalam beberapa langkah sederhana.</p></div><ol class="steps reveal"><li><span>01</span><div><h3>Hubungkan pelacakmu</h3><p>Pasang perangkat Navix di kendaraan yang ingin tetap kamu pantau.</p></div></li><li><span>02</span><div><h3>Buka tampilan langsung</h3><p>Lihat lokasi terkini melalui dashboard pelacakan pribadimu.</p></div></li><li><span>03</span><div><h3>Bergerak dengan yakin</h3><p>Cek kapan pun diperlukan, lalu lanjutkan harimu.</p></div></li></ol></div>
+        </section>
 
-                        const sekarang = new Date();
-                        timeEl.innerText = "Terakhir diperbarui: " + sekarang.toLocaleTimeString('id-ID') + " WIB";
-                    } else {
-                        statusEl.innerText = "Data Kosong";
-                        statusEl.className = "status-connecting";
-                    }
-                })
-                .catch(error => {
-                    console.error("Fetch Error:", error);
-                    statusEl.innerText = "Koneksi Gagal";
-                    statusEl.style.color = "red";
-                });
-        }
+        <section class="try-section section-pad">
+            <div class="try-inner reveal"><p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> Jalanmu, dalam pandangan</p><h2>Siap mengenali<br><em>arahmu?</em></h2><p>Mulai dengan pandangan yang lebih jelas tentang setiap perjalanan.</p><a class="button button-lime" href="tools/index.html">Coba Navix sekarang <i data-lucide="arrow-up-right"></i></a></div>
+        </section>
+    </main>
 
-        ambilDataGPS();
-        setInterval(ambilDataGPS, 3000);
-    </script>
+    <footer class="site-footer"><a class="brand" href="/"><span class="brand-mark">N</span><span>navix<span class="brand-dot">.</span></span></a><p>Lacak yang berarti. Kembali pada yang lebih berarti.</p><span>© 2026 Navix</span></footer>
 </body>
 </html>
