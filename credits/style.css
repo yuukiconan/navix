@@ -6,7 +6,8 @@
     --lime: #d9f35b;
     --moss: #536c52;
     --green: #1f7a50;
-    --line: rgba(23, 33, 29, .16)
+    --line: rgba(23, 33, 29, .16);
+    --orange: #e87542
 }
 
 * {
@@ -23,7 +24,17 @@ body {
     color: var(--ink);
     font-family: 'DM Sans', sans-serif;
     margin: 0;
-    overflow-x: hidden
+    overflow-x: hidden;
+    position: relative
+}
+
+body::before {
+    background: linear-gradient(90deg, transparent calc(50% - 1px), rgba(83, 108, 82, .045) 50%, transparent calc(50% + 1px));
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: -1
 }
 
 a {
@@ -149,7 +160,21 @@ a {
     grid-template-columns: 1.25fr .75fr;
     min-height: 475px;
     padding-bottom: 93px;
-    padding-top: 75px
+    padding-top: 75px;
+    position: relative
+}
+
+.credits-hero::after {
+    color: rgba(83, 108, 82, .5);
+    content: 'FIELD NOTES / 05';
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    position: absolute;
+    right: 42px;
+    top: 40px;
+    transform: rotate(90deg) translateX(100%);
+    transform-origin: right top
 }
 
 .hero-title {
@@ -184,6 +209,8 @@ a {
 
 .team-section {
     background: #e6e2d8;
+    border-bottom: 1px solid var(--line);
+    border-top: 1px solid var(--line);
     max-width: none;
     padding-bottom: 120px;
     padding-top: 82px
@@ -221,11 +248,12 @@ a {
     min-height: 475px;
     padding: 24px;
     position: relative;
-    transition: transform .3s ease
+    transition: box-shadow .3s ease, transform .3s ease
 }
 
 .credit-card:hover {
-    transform: translateY(-7px)
+    box-shadow: 9px 9px 0 var(--moss);
+    transform: translate(-4px, -6px)
 }
 
 .credit-card-dark {
@@ -278,8 +306,11 @@ a {
     justify-content: center;
     margin: 38px 0 28px;
     overflow: hidden;
-    position: relative
+    position: relative;
+    transition: filter .3s ease, transform .3s ease
 }
+
+.credit-card:hover .member-portrait { filter: saturate(1.15); transform: rotate(-1deg) scale(.98); }
 
 .member-portrait img {
     width: 100%;
@@ -369,8 +400,11 @@ a {
 
 .thanks-section {
     padding-bottom: 135px;
-    padding-top: 127px
+    padding-top: 127px;
+    position: relative
 }
+
+.thanks-section::after { color: var(--orange); content: '✳'; font-size: 78px; position: absolute; right: 12%; top: 35%; transform: rotate(14deg); }
 
 .thanks-inner {
     max-width: 700px
@@ -427,6 +461,19 @@ a {
     opacity: 0;
     transform: translateY(24px)
 }
+
+.credits-hero { min-height: 390px; padding-bottom: 60px; padding-top: 46px; }
+.hero-title { font-size: clamp(62px, 7.2vw, 108px); }
+.hero-note { border-left: 5px solid var(--orange); border-top: 0; padding-left: 18px; padding-top: 0; }
+.team-section { padding-bottom: 82px; padding-top: 60px; }
+.section-intro { margin-bottom: 28px; }
+.credits-grid { gap: 10px; }
+.credit-card { min-height: 420px; padding: 20px; }
+.credit-card:nth-child(2) { transform: translateY(10px) rotate(1deg); }
+.credit-card:nth-child(2):hover { transform: translate(-4px, 4px) rotate(1deg); }
+.member-portrait { margin: 25px 0 20px; }
+.member-symbol { color: var(--orange); }
+.thanks-section { padding-bottom: 88px; padding-top: 82px; }
 
 @media(max-width:900px) {
     .desktop-nav {
@@ -515,6 +562,8 @@ a {
         padding-top: 50px
     }
 
+    .credits-hero::after { display: none; }
+
     .hero-title {
         font-size: clamp(60px, 17vw, 92px);
         margin-top: 22px
@@ -546,6 +595,10 @@ a {
     .credit-card {
         min-height: 440px
     }
+
+    .credit-card:hover { box-shadow: 6px 6px 0 var(--moss); transform: translate(-2px, -3px); }
+
+    .thanks-section::after { font-size: 52px; right: 10%; top: 13%; }
 
     .thanks-section {
         padding-bottom: 95px;

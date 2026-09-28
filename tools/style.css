@@ -9,7 +9,8 @@
     --green: #1f7a50;
     --green-dark: #185c3d;
     --green-soft: #e8f3e8;
-    --lime: #d9f35b
+    --lime: #d9f35b;
+    --orange: #e87542
 }
 
 * {
@@ -24,7 +25,17 @@ body {
     background: var(--paper);
     color: var(--ink);
     font-family: 'DM Sans', sans-serif;
-    margin: 0
+    margin: 0;
+    position: relative
+}
+
+body::before {
+    background: linear-gradient(90deg, transparent calc(50% - 1px), rgba(31, 122, 80, .04) 50%, transparent calc(50% + 1px));
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: -1
 }
 
 .topbar {
@@ -34,8 +45,11 @@ body {
     display: flex;
     height: 72px;
     justify-content: space-between;
-    padding: 0 clamp(20px, 4vw, 64px)
+    padding: 0 clamp(20px, 4vw, 64px);
+    position: relative
 }
+
+.topbar::after { background: var(--lime); content: ''; height: 4px; left: 0; position: absolute; right: 0; top: 0; }
 
 .brand {
     align-items: center;
@@ -133,8 +147,11 @@ body {
 .dashboard-shell {
     margin: auto;
     max-width: 1420px;
-    padding: 60px clamp(20px, 4vw, 64px) 50px
+    padding: 60px clamp(20px, 4vw, 64px) 50px;
+    position: relative
 }
+
+.dashboard-shell::before { color: rgba(31, 122, 80, .35); content: 'LIVE VEHICLE / 01'; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .12em; position: absolute; right: clamp(20px, 4vw, 64px); top: 25px; }
 
 .dashboard-heading {
     align-items: end;
@@ -205,8 +222,11 @@ body {
 .activity-card,
 .tip-card {
     background: var(--card);
-    border: 1px solid var(--line)
+    border: 1px solid var(--line);
+    transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease
 }
+
+.overview-card:hover, .activity-card:hover, .tip-card:hover { border-color: var(--green); box-shadow: 6px 6px 0 rgba(31, 122, 80, .12); transform: translate(-2px, -3px); }
 
 .overview-card {
     min-height: 188px;
@@ -393,6 +413,7 @@ body {
 
 .map-frame {
     background: #e6eee4;
+    border-left: 5px solid var(--lime);
     height: 425px;
     margin-top: 22px;
     overflow: hidden;
@@ -565,6 +586,22 @@ body {
     text-transform: uppercase
 }
 
+.dashboard-shell { padding-bottom: 34px; padding-top: 42px; }
+.dashboard-heading { margin-bottom: 24px; }
+.dashboard-heading h1 { font-size: clamp(42px, 4vw, 60px); }
+.overview-grid, .content-grid { gap: 10px; }
+.overview-grid { margin-bottom: 10px; }
+.overview-card { min-height: 165px; padding: 19px; }
+.overview-card-featured { border-left: 5px solid var(--lime); }
+.overview-card h2 { font-size: 27px; margin-top: 11px; }
+.metric-note { margin-top: 24px; }
+.map-panel { min-height: 520px; padding: 19px; }
+.map-frame { height: 395px; margin-top: 17px; }
+.activity-card { padding: 19px; }
+.status-list { margin-top: 24px; }
+.tip-card { padding: 16px; }
+.dashboard-footer { padding-bottom: 14px; padding-top: 14px; }
+
 @media(max-width:800px) {
     .topbar {
         height: 64px
@@ -610,6 +647,8 @@ body {
         padding-bottom: 35px;
         padding-top: 38px
     }
+
+    .dashboard-shell::before { display: none; }
 
     .dashboard-heading {
         align-items: flex-start;
